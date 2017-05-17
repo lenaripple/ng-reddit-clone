@@ -40,26 +40,98 @@
       }
     },
       template: `
-      <form ng-submit="$ctrl.addPost()">
-        <input ng-model="$ctrl.post.name" placeholder="Name" />
-        <input ng-model="$ctrl.post.age" placeholder="Age" />
-        <input class="btn btn-sm" type="submit" value="Submit">
-      </form>
+      <button class="btn btn-primary" ng-click="formOpen = !formOpen">New Post</button>
+        <div ng-show="formOpen">
+        <form class="form-horizontal" ng-submit="$ctrl.addPost()">
+          <fieldset>
+            <legend>Add a New Post</legend>
+            <div class="form-group">
+              <label for="title" class="col-lg-2 control-label">Title</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="$ctrl.post.title" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="author" class="col-lg-2 control-label">Author</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="$ctrl.post.author" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="description" class="col-lg-2 control-label">Description</label>
+              <div class="col-lg-10">
+                <textarea class="form-control" rows="3" ng-model="$ctrl.post.description" required></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="image" class="col-lg-2 control-label">Image URL</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="$ctrl.post.image" required>
+              </div>
+            </div>
+            <div class="form-group">
+            </div>
+            <div class="form-group">
+              <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
 
-      <div ng-repeat="post in $ctrl.posts | orderBy:'age'">
-      <strong>{{post.title}}</strong><br>Posted by: {{post.author}}<br>
-      <img ng-src="{{post.image}}"/><br>
-      {{post.description}}
-      <a href="#" ng-click="$ctrl.deleteDog($event, post)">delete</a>
-      </div>
+        </div>
 
+      <div ng-repeat="post in $ctrl.posts">
+        <strong>{{post.title}}</strong><br>Posted by: {{post.author}}<br>
+        <img ng-src="{{post.image}}"/><br>
+        {{post.description}}
+        <a href="#" ng-click="$ctrl.deletePost($event, post)">delete</a>
+        </div>
       `
     })
-
-
-
 
     </script>
     <script src=“https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js”></script>
   </body>
 </html>
+
+
+<!-- <form class="form-horizontal" ng-submit="$ctrl.addPost()">
+  <fieldset>
+    <legend>Add a New Post</legend>
+    <div class="form-group">
+      <label for="title" class="col-lg-2 control-label">Title</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" ng-model="$ctrl.post.title" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="author" class="col-lg-2 control-label">Author</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" ng-model="$ctrl.post.author" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description" class="col-lg-2 control-label">Description</label>
+      <div class="col-lg-10">
+        <textarea class="form-control" rows="3" ng-model="$ctrl.post.description" required></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="image" class="col-lg-2 control-label">Image URL</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" ng-model="$ctrl.post.image" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+</form> -->
