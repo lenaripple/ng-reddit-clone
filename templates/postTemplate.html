@@ -1,0 +1,66 @@
+
+      <div class="post-bar">
+        <button class="btn btn-primary" ng-click="formOpen = !formOpen">New Post</button>
+      </div>
+        <div class="form-size" ng-show="formOpen" width-"60%">
+            <form novalidate name="$ctrl.newPostForm" class="form-horizontal" ng-submit="$ctrl.addPost()">
+                <fieldset>
+                    <legend>Add a New Post</legend>
+                    <div class="form-group" ng-class="{'has-error': $ctrl.post.title.$invalid}">
+                        <label for="title" class="col-lg-2 control-label">Title</label>
+                        <div class="col-lg-10">
+                            <input type="text" name="title" class="form-control" ng-model="$ctrl.post.title" ng-minlength=3 ng-maxlength=40 required>
+                        </div>
+                        <div class="error" ng-show="$ctrl.newPostForm.title.$dirty && $ctrl.newPostForm.title.$invalid">
+                          <small class="error" ng-show="$ctrl.newPostForm.title.$error.required">Title is Required</small>
+                          <small class="error" ng-show="$ctrl.newPostForm.title.$error.minlength">Your title must be at least three characters long</small>
+                          <small class="error" ng-show="$ctrl.newPostForm.title.$error.maxlength">Your title cannot be longer that 40 characters</small>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': $ctrl.post.author.$invalid}">
+                        <label for="author" class="col-lg-2 control-label">Author</label>
+                        <div class="col-lg-10">
+                            <input type="text" name="author" class="form-control" ng-model="$ctrl.post.author" ng-minlength=3 ng-maxlength=40 required>
+                        </div>
+                        <div class="error" ng-show="$ctrl.newPostForm.author.$dirty && $ctrl.newPostForm.author.$invalid">
+                          <small class="error" ng-show="$ctrl.newPostForm.author.$error.required">Author is Required</small>
+                          <small class="error" ng-show="$ctrl.newPostForm.author.$error.minlength">Author must be at least three characters long</small>
+                          <small class="error" ng-show="$ctrl.newPostForm.author.$error.maxlength">Author name cannot be longer that 40 characters</small>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': $ctrl.post.description.$invalid}">
+                        <label for="description" class="col-lg-2 control-label">Description</label>
+                        <div class="col-lg-10">
+                            <textarea class="form-control" name="description" rows="3" ng-model="$ctrl.post.description" ng-minlength=10 ng-maxlength=400 required></textarea>
+                        </div>
+                        <div class="error" ng-show="$ctrl.newPostForm.description.$dirty && $ctrl.newPostForm.description.$invalid">
+                          <small class="error" ng-show="$ctrl.newPostForm.description.$error.required">Description is Required</small>
+                          <small class="error" ng-show="$ctrl.newPostForm.description.$error.minlength">Description must be at least ten characters long</small>
+                          <small class="error" ng-show="$ctrl.newPostForm.description.$error.maxlength">Description cannot be longer that 400 characters</small>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': $ctrl.post.image.$invalid}">
+                        <label for="image" class="col-lg-2 control-label">Image URL</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" ng-model="$ctrl.post.image" required>
+                        </div>
+                        <div class="error" ng-show="$ctrl.newPostForm.image.$dirty && $ctrl.newPostForm.image.$invalid">
+                          <small class="error" ng-show="$ctrl.newPostForm.image.$error.required">Image URL is Required</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="submit" class="btn btn-primary" ng-click="formOpen = !formOpen" ng-disabled="$ctrl.newPostForm.$invalid">Submit</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="posts" ng-repeat="post in $ctrl.posts">
+            <img ng-src={{post.image}} width="30%" /><br>
+            <h3>{{post.title}}</h3><br>
+            <h5>Posted by: {{post.author}}<br>{{post.description}}</h5>
+            <a href="#" ng-click="$ctrl.deletePost($event, post)">delete</a>
+        </div>

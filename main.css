@@ -13,3 +13,11 @@
 main.container {
   margin-bottom: 4em;
 }
+
+main{
+  margin:10px;
+}
+
+.post-bar{
+  margin-bottom: 15px;
+}
