@@ -1,7 +1,15 @@
-
-      <div class="post-bar">
-        <button class="btn btn-primary" ng-click="formOpen = !formOpen">New Post</button>
-      </div>
+      <div class="post-bar btn-group">
+        <button class="btn btn-info" ng-click="formOpen = !formOpen">New Post</button>
+        <label for="">Filter Posts:</label>
+        <input type="text" ng-model="filterPosts"></input>
+        <label for="">Sort By:</label>
+          <select class="btn-info dropdown-toggle" ng-model="searchTerm">
+            <option value="title">Title</option>
+            <option value="author">Author</option>
+            <option value="date">Date</option>
+            <option value="votes">Votes</option>
+          </select>
+        </div>
         <div class="form-size" ng-show="formOpen" width-"60%">
             <form novalidate name="$ctrl.newPostForm" class="form-horizontal" ng-submit="$ctrl.addPost()">
                 <fieldset>
@@ -58,7 +66,7 @@
                 </fieldset>
             </form>
         </div>
-        <div class="posts" ng-repeat="post in $ctrl.posts">
+        <div class="posts" ng-repeat="post in $ctrl.posts | filter: filterPosts | orderBy: searchTerm ">
             <img ng-src={{post.image}} width="30%" /><br>
             <h3>{{post.title}}</h3><br>
             <h5>Posted by: {{post.author}}<br>{{post.description}}</h5>

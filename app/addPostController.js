@@ -5,6 +5,7 @@ angular.module('app')
       vm.$onInit = function () {
       vm.posts = [
         {title:"Nice", author:"lirip", image: "http://www.telegraph.co.uk/content/dam/Travel/galleries/travel/activityandadventure/The-worlds-most-beautiful-mountains/mountains-Kirkjufe_3374110a-large.jpg", description: "Kirkjufell, Iceland"},
+        {title:"Cool post", author:"other", image: "", description: "This is super cool wow omg amazing"}
       ]
   }
   vm.addPost = function(){
