@@ -1,0 +1,16 @@
+<div class="form-size" ng-show="commentOpen">
+  <div class="well">
+  <form novalidate name="$ctrl.newComment" class="form-horizontal" ng-submit="$ctrl.addComment()">
+    <div class="form-group" ng-class="{'has-error': $ctrl.comment.body.$invalid}">
+      <label for="comment" class="control-label">Enter your comment here:</label>
+      <div class="col-lg-8">
+        <textarea class="form-control" name="comment-body" rows="5" ng-model="$ctrl.comment.body" ng-minlength=10 ng-maxlength=400 required></textarea>
+      <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="submit" class="btn btn-success" ng-click="commentOpen = !commentOpen" ng-disabled="$ctrl.newComment.$invalid">Submit</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

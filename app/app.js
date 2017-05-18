@@ -3,3 +3,8 @@ angular.module('app', [])
     controller: 'addPostController',
     templateUrl: './templates/postTemplate.html'
   })
+  .component('comments', {
+    controller: 'commentController',
+    templateUrl: './templates/commentTemplate.html'
+
+  })
