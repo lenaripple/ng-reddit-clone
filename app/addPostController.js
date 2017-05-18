@@ -2,7 +2,6 @@ angular.module('app')
   .controller('addPostController',
     function() {
       const vm = this
-      const votes = 0
       vm.$onInit = function () {
       vm.posts = [
         {title:"Nice", author:"lirip", image: "http://www.telegraph.co.uk/content/dam/Travel/galleries/travel/activityandadventure/The-worlds-most-beautiful-mountains/mountains-Kirkjufe_3374110a-large.jpg", description: "Kirkjufell, Iceland", date: '', votes: 12, comments:[]},
@@ -20,4 +19,8 @@ angular.module('app')
     e.preventDefault()
     vm.posts.splice(vm.posts.indexOf(post), 1)
   }
+  vm.changeVotes = function(post, changeVal) {
+    console.log('clicked');
+    post.votes += changeVal;
+    }
   })
