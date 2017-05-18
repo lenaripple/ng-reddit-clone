@@ -75,12 +75,12 @@
   </div>
   <div class="media-body">
     <h4 class="media-heading">{{post.title}}</h4>
-      <a><i class="glyphicon glyphicon-arrow-up" ng-click="$ctrl.changeVotes(post,1)"></i></a>
+      <a><i class="glyphicon glyphicon-arrow-up" ng-click="$ctrl.changeVotes(post,1)" ng-min=0></i></a>
       {{post.votes}}
-      <a><i class="glyphicon glyphicon-arrow-down" ng-click="$ctrl.changeVotes(post,-1)"></i></a>
+      <a><i class="glyphicon glyphicon-arrow-down" ng-click="$ctrl.changeVotes(post,-1)" ng-min=0 ></i></a>
     <p>{{post.description}}</p>
     <div class="text-left">
-    Posted by: {{post.author}} on {{post.date | date}}
+    Posted by: {{post.author}} on {{post.date | date:"short"}}
     </div>
     <!-- <div class="row">
       <div class=" well col-md-offset-1">
