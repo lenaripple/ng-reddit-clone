@@ -21,7 +21,9 @@ angular.module('app')
     vm.posts.splice(vm.posts.indexOf(post), 1)
   }
   vm.changeVotes = function(post, changeVal) {
-    post.votes += changeVal;
+    if (post.votes>=1){
+    post.votes += changeVal
+  }
     vm.votes
     }
   })
