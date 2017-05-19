@@ -1,4 +1,4 @@
-angular.module('app', [])
+angular.module('app', ["angularMoment"])
   .component('app', {
     controller: 'addPostController',
     templateUrl: './templates/postTemplate.html'

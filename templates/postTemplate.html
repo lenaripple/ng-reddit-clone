@@ -5,7 +5,7 @@
         <select class="btn-primary dropdown-toggle" ng-model="searchTerm">
           <option value="title">Title</option>
           <option value="author">Author</option>
-          <option value="-date">Date</option>
+          <option value="post.date">Date</option>
           <option value="-votes">Votes</option>
         </select>
         <div class="pull-right">
@@ -82,13 +82,13 @@
         <a><i class="glyphicon glyphicon-arrow-down" ng-click="$ctrl.downVote(post)"></i></a>
       <p>{{post.description}}</p>
       <div class="text-left">
-      Posted by: {{post.author}} on {{post.date | date:"short"}}
+      Posted by: {{post.author}} <span am-time-ago="post.date"></span>
       </div>
-      <!-- <div class="row">
+      <div class="panel" ng-repeat="comment in post.comments">
         <div class=" well col-md-offset-1">
-          <p>{{post.comment}}</p>
+          <p>{{comment}}</p>
         </div>
-      </div> -->
+      </div>
       <div class="text-left">
         <button class="btn-xs btn-danger" ng-click="$ctrl.deletePost($event, post)">Delete Post</button>
         <button class="btn-xs btn-primary" ng-click="$ctrl.addComment($event, post)">Add a Comment</button>
