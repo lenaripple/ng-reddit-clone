@@ -35,7 +35,7 @@ angular.module('app')
       post.votes++
     }
     vm.addComment = function(post){
-      post.comments.push(vm.post['comments'])
-      delete vm.post
+      post.comment.push(vm.post['comments'])
+      delete vm.comment
     }
   })

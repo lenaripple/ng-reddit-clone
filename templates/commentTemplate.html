@@ -1,4 +1,4 @@
-<div class="form-size" ng-show="commentOpen">
+<div class="form-size" ng-show="commentOpen=!commentOpen">
   <div class="well">
   <form novalidate name="$ctrl.newComment" class="form-horizontal" ng-submit="$ctrl.addComment()">
     <div class="form-group" ng-class="{'has-error': $ctrl.comment.body.$invalid}">

@@ -76,22 +76,46 @@
       <img ng-src={{post.image}} height="200px" width="250px">
     </div>
     <div class="media-body">
-      <h4 class="media-heading">{{post.title}}</h4>
+      <h4 class="media-heading">{{post.title}} |
         <a><i class="glyphicon glyphicon-arrow-up" ng-click="$ctrl.upVote(post)" ng-min=0></i></a>
         {{post.votes}}
         <a><i class="glyphicon glyphicon-arrow-down" ng-click="$ctrl.downVote(post)"></i></a>
+        </h4>
+        <div class="">
+          <div class="pull-right">
+            {{post.author}}
+          </div>
+        </div>
       <p>{{post.description}}</p>
-      <div class="text-left">
-      Posted by: {{post.author}} <span am-time-ago="post.date"></span>
+
+      <div class="text-left" >
+      <span am-time-ago="post.date"></span> |
+      <a><i class="glyphicon glyphicon-comment" ng-click="commentOpen=!commentOpen"></i></a>
       </div>
-      <div class="panel" ng-repeat="comment in post.comments">
-        <div class=" well col-md-offset-1">
-          <p>{{comment}}</p>
+      <div class="" ng-show="commentOpen">
+        <div ng-repeat="comment in post.comments">
+          {{comment}}
+        </div>
+        <div class="form-size">
+          <div class="well">
+          <form novalidate name="$ctrl.newComment" class="form-horizontal" ng-submit="$ctrl.addComment()">
+            <div class="form-group" ng-class="{'has-error': $ctrl.comment.body.$invalid}">
+              <label for="comment" class="control-label">Enter your comment here:</label>
+              <div class="col-lg-8">
+                <textarea class="form-control" name="comment-body" rows="2" ng-model="$ctrl.comment.body" ng-minlength=10 ng-maxlength=400 required></textarea>
+              <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                  <button type="submit" class="btn btn-success" ng-click="commentOpen = !commentOpen" ng-disabled="$ctrl.newComment.$invalid">Submit</button>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="text-left">
-        <button class="btn-xs btn-danger" ng-click="$ctrl.deletePost($event, post)">Delete Post</button>
-        <button class="btn-xs btn-primary" ng-click="$ctrl.addComment($event, post)">Add a Comment</button>
-      </div>
+
+    <div class="text-left">
+      <button class="btn-xs btn-danger" ng-click="$ctrl.deletePost($event, post)">Delete Post</button>
+    </div>
     </div>
   </div>
