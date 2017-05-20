@@ -27,3 +27,13 @@ main{
 .text-left{
   margin-top: 15px;
 }
+
+
+.comment-container{
+  padding-bottom: 0;
+  margin: 0
+}
+
+.comment-submit{
+  margin-top: 10px;
+}

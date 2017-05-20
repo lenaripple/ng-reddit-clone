@@ -53,7 +53,7 @@
             <div class="form-group" ng-class="{'has-error': $ctrl.post.image.$invalid}">
                 <label for="image" class="col-lg-2 control-label">Image URL</label>
                 <div class="col-lg-8">
-                    <input type="text" class="form-control" ng-model="$ctrl.post.image" required>
+                    <input type="url" class="form-control" ng-model="$ctrl.post.image" required>
                 </div>
                 <div class="error alert-danger" ng-show="$ctrl.newPostForm.image.$dirty && $ctrl.newPostForm.image.$invalid">
                   <small class="error alert-danger" ng-show="$ctrl.newPostForm.image.$error.required">Image URL is Required</small>
@@ -89,22 +89,22 @@
       <div class="text-left" >
       <span am-time-ago="post.date"></span> |
       <a><i class="glyphicon glyphicon-comment" ng-click="commentOpen=!commentOpen"></i></a>
-      <ng-pluralize count="post.comments.length" when="{'0': '', '1': '1 comment', 'other': '{} comments'}"></ng-pluralize>
+      <ng-pluralize count="post.comments.length" when="{'0': 'Comment', '1': '1 comment', 'other': '{} comments'}"></ng-pluralize>
       </div>
       <div ng-show="commentOpen">
+        <div class="well-sm">
         <div ng-repeat="comment in post.comments">
           {{comment.text}}
+          <a href="#" ng-click="$ctrl.deleteComment($event, post, comment)">Delete</a>
         </div>
         <div class="form-size">
-          <div class="well">
           <form class="form-horizontal" ng-submit="$ctrl.addComment(post)">
-            <div class="form-group">
-              <label for="comment" class="control-label">Enter your comment here:</label>
+            <div class="form-group comment-container">
               <div class="col-lg-8">
-                <textarea type="text" class="form-control" name="comment" rows="2" ng-model="$ctrl.newComment.text" required></textarea>
+                <textarea type="text" class="form-control" name="comment" ng-model="$ctrl.newComment.text" required></textarea>
               <div class="form-group">
-                <div class="col-lg-10 col-lg-offset-2">
-                  <button type="submit" class="btn btn-success" ng-click="commentOpen = !commentOpen">Submit</button>
+                <div class="col-lg-10">
+                  <button type="submit" class="btn btn-success comment-submit" ng-click="commentOpen = !commentOpen">Submit</button>
                 </div>
               </div>
               </div>
